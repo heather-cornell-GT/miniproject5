@@ -38,6 +38,10 @@ class MonsterDiagnosisAgent:
             return []
 
 
+        def hmc_depth_first_search(starting_disease, remaining_diseases, running_total_foreach_vitamin, chosen_vitamins):
+
+            return None
+
         def vitamin_final_sign(x): ##turn any combination of numbers into the vitamin levels defined earlier: -1, 0 , 1
                 if x > 0:
                     return 1
@@ -46,5 +50,5 @@ class MonsterDiagnosisAgent:
                 else:
                     return 0
 
-        pass
+        return []
 
