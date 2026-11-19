@@ -1,4 +1,5 @@
 class MonsterDiagnosisAgent:
+    vitamin_levels = {"+": 1, "0": 0, "-": -1}
     def __init__(self):
         # If you want to do any initial processing, add it here.
         pass
@@ -24,6 +25,26 @@ class MonsterDiagnosisAgent:
         # The solve method will be called multiple times, each of which will have a new set
         # of diseases and a new patient to diagnose.
 
-        list_of_vitamins = sorted(patient.keys)
+
+        list_of_vitamins = sorted(patient.keys())
+        vitamin_length = len(list_of_vitamins)
+        patients_vitamin_level = []
+        for v in list_of_vitamins:
+            value = self.vitamin_levels[patient[v]]
+            patients_vitamin_level.append(value)
+            print(f'value: {value}')
+
+        if all(t == 0 for t in patients_vitamin_level): ## patient is perfectly healthy qand all vitamins are normal
+            return []
+
+
+        def vitamin_final_sign(x): ##turn any combination of numbers into the vitamin levels defined earlier: -1, 0 , 1
+                if x > 0:
+                    return 1
+                elif x < 0:
+                    return -1
+                else:
+                    return 0
+
         pass
 
