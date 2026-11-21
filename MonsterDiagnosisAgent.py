@@ -24,7 +24,13 @@ class MonsterDiagnosisAgent:
         #
         # The solve method will be called multiple times, each of which will have a new set
         # of diseases and a new patient to diagnose.
-
+        def vitamin_final_sign(x): ##turn any combination of numbers into the vitamin levels defined earlier: -1, 0 , 1
+                if x > 0:
+                    return 1
+                elif x < 0:
+                    return -1
+                else:
+                    return 0
 
         list_of_vitamins = sorted(patient.keys())
         vitamin_length = len(list_of_vitamins)
@@ -37,7 +43,12 @@ class MonsterDiagnosisAgent:
         if all(t == 0 for t in patients_vitamin_level): ## patient is perfectly healthy qand all vitamins are normal
             return []
 
+        disease_names = list(diseases.keys())
+        disease_vitamin_levels = {name: [self.vitamin_levels[diseases[name].get(v, "0")] for v in list_of_vitamins]for name in disease_names}
 
+        def check_if_disease_matches_patient():
+
+            return True
         # def hmc_depth_first_search(starting_disease, remaining_diseases, running_total_foreach_vitamin, chosen_vitamins):
         #     if remaining_diseases == 0:
         #         return None
@@ -46,13 +57,7 @@ class MonsterDiagnosisAgent:
         #     for x in range(starting_disease, vitamin_length - remaining_diseases + 1):
         #     return None
 
-        def vitamin_final_sign(x): ##turn any combination of numbers into the vitamin levels defined earlier: -1, 0 , 1
-                if x > 0:
-                    return 1
-                elif x < 0:
-                    return -1
-                else:
-                    return 0
+
 
         return []
 
