@@ -46,8 +46,11 @@ class MonsterDiagnosisAgent:
         disease_names = list(diseases.keys())
         disease_vitamin_levels = {name: [self.vitamin_levels[diseases[name].get(v, "0")] for v in list_of_vitamins]for name in disease_names}
 
-        def check_if_disease_matches_patient():
-
+        def check_if_disease_matches_patient(combination):
+            for x in range(vitamin_length):
+                total = sum(disease_vitamin_levels[name][x] for name in combination)
+                if vitamin_final_sign(total) != patients_vitamin_level[x]:
+                    return False
             return True
         # def hmc_depth_first_search(starting_disease, remaining_diseases, running_total_foreach_vitamin, chosen_vitamins):
         #     if remaining_diseases == 0:
