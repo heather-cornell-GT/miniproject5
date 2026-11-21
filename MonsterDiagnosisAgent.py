@@ -38,9 +38,13 @@ class MonsterDiagnosisAgent:
             return []
 
 
-        def hmc_depth_first_search(starting_disease, remaining_diseases, running_total_foreach_vitamin, chosen_vitamins):
-
-            return None
+        # def hmc_depth_first_search(starting_disease, remaining_diseases, running_total_foreach_vitamin, chosen_vitamins):
+        #     if remaining_diseases == 0:
+        #         return None
+        #     if vitamin_length - starting_disease < remaining_diseases:
+        #         return None
+        #     for x in range(starting_disease, vitamin_length - remaining_diseases + 1):
+        #     return None
 
         def vitamin_final_sign(x): ##turn any combination of numbers into the vitamin levels defined earlier: -1, 0 , 1
                 if x > 0:
@@ -52,3 +56,26 @@ class MonsterDiagnosisAgent:
 
         return []
 
+    #BEGIN CODE FROM https: // docs.python.org / 3.10 / library / itertools.html  # itertools.combinations
+
+    @staticmethod
+    def combinations(iterable, r):
+        # combinations('ABCD', 2) --> AB AC AD BC BD CD
+        # combinations(range(4), 3) --> 012 013 023 123
+        pool = tuple(iterable)
+        n = len(pool)
+        if r > n:
+            return
+        indices = list(range(r))
+        yield tuple(pool[i] for i in indices)
+        while True:
+            for i in reversed(range(r)):
+                if indices[i] != i + n - r:
+                    break
+            else:
+                return
+            indices[i] += 1
+            for j in range(i + 1, r):
+                indices[j] = indices[j - 1] + 1
+            yield tuple(pool[i] for i in indices)
+    # END CODE FROM https://docs.python.org/3.10/library/itertools.html#itertools.combinations
